@@ -3,15 +3,19 @@ import cv2
 import numpy as np
 import os
 from listasydiccionarios import *
-import serial, time
+import serial
+import time
 
 
-#############################comunicacion serial
-port="/dev/cu.usbmodem14201"
+port=''
 baud=9600
 correcto = False
 arduino = serial.Serial(port=port, baudrate=baud, timeout=.1)
 time.sleep(1)
+if v==1:
+    leer()
+elif v==0:
+    cerrar()
 
 def leerSerial():
     data = arduino.readline()
@@ -23,23 +27,26 @@ def abrir():
     arduino.write(b"1")
     print("abierto")
     leerSerial()
+    arduino.close()
 
 def cerrar():
     arduino.write(b"0")
     print("cerrado")
     leerSerial()
+    arduino.close()
 
 ###########################################################################
 
-def usuario_bienvenido(name):
+def usuario_bienvenido(x,name):
     if name=="Unknown":
         cerrar()
         #print("no registrado")
     else:
-        abrir()
+        abrir(x,1)
         #print("Bienvenido: "+name)
 
-def iniciarTracking():
+def iniciarTracking(x):
+    
     datos=leer()
     matrices=[]
     encodes=[]

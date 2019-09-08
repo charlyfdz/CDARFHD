@@ -1,4 +1,4 @@
-{'nombre': 'Carlos Fernandez', 'nivel': '20', 'foto': 'fotos/carlos_fernandez.jpg', 'huella': '2'}
-{'nombre': 'Jelena kiselev', 'nivel': '5', 'foto': 'fotos/jelena_kiselev.jpg', 'huella': '5'}
-{'nombre': 'Julia Ivanova', 'nivel': '5', 'foto': 'fotos/julia_ivanova.jpg', 'huella': '5'}
-{'nombre': 'Viktoria Ivanova', 'nivel': '5', 'foto': 'fotos/viktoria_ivanova.jpg', 'huella': '5'}
+{'nombre': 'Carlos Fernandez 1', 'nivel': '20', 'foto': 'fotos/carlos_fernandez.jpg', 'huella': '2'}
+{'nombre': 'Jelena Kiselev 1', 'nivel': '21', 'foto': 'fotos/jelena_kiselev.jpg', 'huella': '2'}
+{'nombre': 'Julia Ivanova 1 ', 'nivel': '21', 'foto': 'fotos/julia_ivanova.jpg', 'huella': '2'}
+{'nombre': 'Viktoria Ivanova', 'nivel': '20', 'foto': 'fotos/viktoria_ivanova.jpg', 'huella': '2'}
