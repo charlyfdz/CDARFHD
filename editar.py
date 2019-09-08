@@ -28,7 +28,7 @@ def comu(x):
 
 def iniciaCom(v,arduino):
     if v==1:
-        leer(arduino)
+        abrir(arduino)
     elif v==0:
         cerrar(arduino)
 
