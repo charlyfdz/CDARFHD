@@ -3,12 +3,41 @@ import cv2
 import numpy as np
 import os
 from listasydiccionarios import *
+import serial, time
+
+
+#############################comunicacion serial
+port="/dev/cu.usbmodem14201"
+baud=9600
+correcto = False
+arduino = serial.Serial(port=port, baudrate=baud, timeout=.1)
+time.sleep(1)
+
+def leerSerial():
+    data = arduino.readline()
+    arr = str(data)
+    if data:
+        print (arr)
+
+def abrir():
+    arduino.write(b"1")
+    print("abierto")
+    leerSerial()
+
+def cerrar():
+    arduino.write(b"0")
+    print("cerrado")
+    leerSerial()
+
+###########################################################################
 
 def usuario_bienvenido(name):
     if name=="Unknown":
-        print("usuario no registrado")
+        cerrar()
+        #print("no registrado")
     else:
-        print("Bienvenido: "+name)
+        abrir()
+        #print("Bienvenido: "+name)
 
 def iniciarTracking():
     datos=leer()
@@ -31,7 +60,6 @@ def iniciarTracking():
         known_face_names.append(datos[i]["nombre"])
 
     video_capture = cv2.VideoCapture(0)
-
     while True:
         ret, frame = video_capture.read()
 
@@ -42,27 +70,32 @@ def iniciarTracking():
         if process_this_frame:
             face_locations = face_recognition.face_locations(rgb_small_frame)
             face_encodings = face_recognition.face_encodings(rgb_small_frame, face_locations)
-
             face_names = []
+
+            if face_encodings ==[]:
+                cerrar()
+
+
             for face_encoding in face_encodings:
                 matches = face_recognition.compare_faces(known_face_encodings, face_encoding)
+                
                 name = "Unknown"
-                usuario_bienvenido(name)
                 # # If a match was found in known_face_encodings, just use the first one.
                 # if True in matches:
                 #     first_match_index = matches.index(True)
                 #     name = known_face_names[first_match_index]
-
+                
                 face_distances = face_recognition.face_distance(known_face_encodings, face_encoding)
                 best_match_index = np.argmin(face_distances)
                 if matches[best_match_index]:
                     name = known_face_names[best_match_index]
                     usuario_bienvenido(name)
-
+                
                 face_names.append(name)
 
         process_this_frame = not process_this_frame
 
+        
         for (top, right, bottom, left), name in zip(face_locations, face_names):
             top *= 4
             right *= 4
