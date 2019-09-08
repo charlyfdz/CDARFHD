@@ -1,0 +1,4 @@
+{'nombre': 'Carlos Fernandez', 'nivel': '20', 'foto': 'fotos/carlos_fernandez.jpg', 'huella': '2'}
+{'nombre': 'Jelena kiselev', 'nivel': '5', 'foto': 'fotos/jelena_kiselev.jpg', 'huella': '5'}
+{'nombre': 'Julia Ivanova', 'nivel': '5', 'foto': 'fotos/julia_ivanova.jpg', 'huella': '5'}
+{'nombre': 'Viktoria Ivanova', 'nivel': '5', 'foto': 'fotos/viktoria_ivanova.jpg', 'huella': '5'}
